@@ -57,7 +57,7 @@ class ApiController extends Controller
         public function update (Request $request,$id){
             $validator=Validator::make($request->all(),[
                 'name' => 'string',
-                'age' => 'integer'
+                'age' => 'integer|max:21'
 
             ]);
             if($validator->fails()){
@@ -68,6 +68,8 @@ class ApiController extends Controller
                     'message' => $validator->messages()
 
                 ];
+
+                
                 return response()->json($data,422);
 
 
@@ -77,17 +79,17 @@ class ApiController extends Controller
 
             }
 
-            $old_student=Student::find($id);
+            $student=Student::find($id);
             // return $old_student;
             $old_student_data=[
 
-               'name'=>$old_student->name,
-               'age'=>$old_student->age
+               'name'=>$student->name,
+               'age'=>$student->age
 
             ];
 
 
-            $new_student_info=$old_student->update([
+            $new_student=$student->update([
                 'name'=>$request->name,
                 'age'=>$request->age
 
@@ -101,7 +103,7 @@ class ApiController extends Controller
                 'status'=>'200',
                 'old_student_info' => $old_student_data,
                 'message'=>"the studet information updated successfully",
-                'student'=>$old_student
+                'student'=>$student
 
 
             ];
