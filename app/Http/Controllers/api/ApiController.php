@@ -89,7 +89,7 @@ class ApiController extends Controller
             ];
 
 
-            $new_student=$student->update([
+            $student->update([
                 'name'=>$request->name,
                 'age'=>$request->age
 
