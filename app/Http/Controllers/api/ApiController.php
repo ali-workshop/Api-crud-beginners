@@ -54,7 +54,7 @@ class ApiController extends Controller
         }
 
 
-        public function udpate (Request $request,$id){
+        public function update (Request $request,$id){
             $validator=Validator::make($request->all(),[
                 'name' => 'string',
                 'age' => 'integer'
@@ -77,8 +77,17 @@ class ApiController extends Controller
 
             }
 
-            $old_student_data=Student::find($id);
-            $new_student_info=$old_student_data->update([
+            $old_student=Student::find($id);
+            // return $old_student;
+            $old_student_data=[
+
+               'name'=>$old_student->name,
+               'age'=>$old_student->age
+
+            ];
+
+
+            $new_student_info=$old_student->update([
                 'name'=>$request->name,
                 'age'=>$request->age
 
@@ -92,7 +101,7 @@ class ApiController extends Controller
                 'status'=>'200',
                 'old_student_info' => $old_student_data,
                 'message'=>"the studet information updated successfully",
-                'student'=>$new_student_info
+                'student'=>$old_student
 
 
             ];
