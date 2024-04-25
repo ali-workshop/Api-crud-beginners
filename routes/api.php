@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 Route::get('/student', [ApiController::class,'index']);
 Route::post('/student', [ApiController::class,'store']);
-Route::put('/student/{id}', [ApiController::class,'update']);#see the category id case weh use the www-xxx to fix it aram. 
+Route::put('/student/{id}', [ApiController::class,'update']);#see the category id case ali saleh 24/4 when use the www-xxx to fix it aram. 
