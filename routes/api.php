@@ -10,4 +10,4 @@ Route::get('/user', function (Request $request) {
 Route::get('/student', [ApiController::class,'index']);
 Route::post('/student', [ApiController::class,'store']);
 Route::put('/student/{id}', [ApiController::class,'update']);#see the category id case ali saleh 24/4 when use the www-xxx to fix it aram. 
-Route::delete('/student/{id}', [ApiController::class,'delete']);
+Route::delete('/student/{student}', [ApiController::class,'delete']);#the parameter shoiuld be the same name in the controller.
