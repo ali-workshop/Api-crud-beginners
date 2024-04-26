@@ -112,5 +112,17 @@ class ApiController extends Controller
 
         } 
 
+        public function delete(Student $student){
+
+            $student->delete();
+            $data=[
+
+                "status"=>'200',
+                "message"=>'the student deleted successfully'
+            ];
+            return response()->json($data,200);
+        }
+
+
         
 }
